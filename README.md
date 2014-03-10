@@ -186,7 +186,7 @@ Change the host name `ubuntu-armhf` to `black`
 
 Install the lighttp webserver
 
-    #sudo aptitude install lighttpd
+    #sudo apt-get install lighttpd
 
 
 Configure
