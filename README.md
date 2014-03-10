@@ -1,8 +1,8 @@
-# Portable Classroom Linux Servers on BeagleBone Black
+# A Portable Classroom Linux Server on the BeagleBone Black
 
 By: Johan Nylander, BILS
 
-Version: 03/07/2014 10:55:19 PM
+Version: 03/10/2014 02:08:34 PM
 
 ***WARNING***: Partially incomplete instructions.
 
@@ -164,7 +164,7 @@ Other ways to (permamently) change keyboard layout and TTY fonts etc are by usin
 
 Add your own here
 
-    sudo apt-get install ncbi-blast+ muscle
+    sudo apt-get install 
 
 And add this file
 
@@ -266,14 +266,6 @@ Add your own files (that all new users should have in their home folders) to `/e
 
 
 ### Change user permissions and add users.
-
-
-#### Make backups
-
-    sudo cp /etc/passwd /etc/passwd.cpy
-    sudo cp /etc/group /etc/group.cpy
-    sudo cp /etc/gshadow /etc/gshadow.cpy
-    sudo cp /etc/shadow /etc/shadow.cpy
 
 
 #### Add new admin user (group sudo) (**NOTE**: need to provide `<password>`)
