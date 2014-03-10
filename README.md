@@ -164,7 +164,7 @@ Other ways to (permamently) change keyboard layout and TTY fonts etc are by usin
 
 Add your own here
 
-    sudo apt-get install 
+    sudo apt-get install ncbi-blast+ muscle
 
 And add this file
 
