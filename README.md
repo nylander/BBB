@@ -196,7 +196,7 @@ Configure
 
 And add some default files
 
-    sudo cp $HOME/BBB/www/* /var/www
+    #sudo cp $HOME/BBB/www/* /var/www
 
 
 ### WiFi-broadcasting
