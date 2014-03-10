@@ -168,7 +168,7 @@ Add your own here
 
 And add this file
 
-    git clone https://github.com/nylander/BBB.git
+    git clone git://github.com/nylander/BBB.git
     
 
 #### Change host name
