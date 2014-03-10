@@ -160,7 +160,7 @@ Other ways to (permamently) change keyboard layout and TTY fonts etc are by usin
 
 ### Install some software
     
-    sudo apt-get install vim git dnsmasq iw hostapd
+    sudo apt-get install vim git dnsmasq iw hostapd curl
 
 Add your own here
 
@@ -268,16 +268,18 @@ Add your own files (that all new users should have in their home folders) to `/e
 ### Change user permissions and add users.
 
 
-#### Add new admin user (group sudo) (**NOTE**: need to provide `<password>`)
+#### Add new admin user
+
+Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
     sudo useradd -m -G sudo -p <password>  bbb
 
 
 #### Add users
 
-Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=30.
+Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=20.
 
-    for u in $(seq -w 0 30); do sudo useradd -m -p catboxyellow user${u}; done
+    for u in $(seq -w 0 20); do sudo useradd -m -p catboxyellow user${u}; done
 
 
 #### Disable the default user
