@@ -200,9 +200,9 @@ Configure
 
     #more commands here
 
-    sudo lighttpd-enable-mod userdir
+    #sudo lighttpd-enable-mod userdir
 
-    sudo service lighttpd reload
+    #sudo service lighttpd reload
 
 
 ### WiFi-broadcasting
@@ -299,7 +299,7 @@ Disable (lock) the default user `ubuntu`. To unlock, use `-u`.
 
 ### TODO
 
-* WiFi alternatives for bridged settings (plug an ethernet cable in BBB, and let it share internet).
+* WiFi alternatives for bridged settings (plug an ethernet cable in BBB, and let it share its' internet connection).
 
 
 
