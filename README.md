@@ -2,9 +2,9 @@
 
 By: Johan Nylander, BILS
 
-Version: 03/10/2014 02:08:34 PM
+Version: 03/11/2014 04:21:07 PM
 
-***WARNING***: Partially incomplete instructions.
+**NOTE**: Partially incomplete instructions.
 
 
 ## Description
@@ -42,7 +42,7 @@ Run these steps on your local computer having a card reader. Tested on 64bit Xub
     cd $HOME/tmp/bbb
 
 
-### Check device name by looking at what appears before and after pluging in the sd card in your computer
+### Check device name by looking at what appears before and after plugging in the sd card in your computer
 
     ls -lah /dev/sd* /dev/mmcb*
 
@@ -116,7 +116,9 @@ Logon to ubuntu-armhf as user `ubuntu` with a password `ubuntu`
 
 **NOTE**: This step will *owerwrite* what you have on the internal drive on your BBB!
 
-"The prebuilt image is sized to exactly 1832MB to allow it to fit into the BeagleBone Black's on-board 2GB NAND storage. This size also allows it to fit on a wide variety of external microSD cards. The image can be resized to take advantage of additional space available on larger microSD cards. To install the image to the internal eMMC, boot from the SD card. While booted from an external SD card, the internal eMMC will be available as `/dev/mmcblk1`." To write the image to eMMC, execute:
+"The prebuilt image is sized to exactly 1832MB to allow it to fit into the BeagleBone Black's on-board 2GB NAND storage. This size also allows it to fit on a wide variety of external microSD cards. The image can be resized to take advantage of additional space available on larger microSD cards. To install the image to the internal eMMC, boot from the SD card. While booted from an external SD card, the internal eMMC will be available as `/dev/mmcblk1`."
+
+To write the image to eMMC, execute:
 
     wget http://s3.armhf.com/debian/saucy/bone/ubuntu-saucy-13.10-armhf-3.8.13-bone30.img.xz
     sudo su -
@@ -184,19 +186,23 @@ Change the host name `ubuntu-armhf` to `black`
 ### Install and configure webserver
 
 
-Install the lighttp webserver
+Add some default files
+
+    #sudo cp $HOME/BBB/www/* /var/www
+
+
+Install the [lighttpd](http://www.lighttpd.net) webserver
 
     #sudo apt-get install lighttpd
 
 
 Configure
 
-    #text
+    #more commands here
 
+    sudo lighttpd-enable-mod userdir
 
-And add some default files
-
-    #sudo cp $HOME/BBB/www/* /var/www
+    sudo service lighttpd reload
 
 
 ### WiFi-broadcasting
@@ -291,13 +297,17 @@ Disable (lock) the default user `ubuntu`. To unlock, use `-u`.
     sudo passwd -l ubuntu
 
 
+### TODO
+
+* WiFi alternatives for bridged settings (plug an ethernet cable in BBB, and let it share internet).
+
+
+
 ### Documentation
 
 I took information and some text from these sources (March 2014):
 
 [http://analogdigitallab.org/blogs/beaglebone-black-webserver-running-ubuntu](http://analogdigitallab.org/blogs/beaglebone-black-webserver-running-ubuntu)
-
-[http://cberner.com/2013/02/03/using-hostapd-on-ubuntu-to-create-a-wifi-access-point](http://cberner.com/2013/02/03/using-hostapd-on-ubuntu-to-create-a-wifi-access-point)
 
 [http://cberner.com/2013/02/03/using-hostapd-on-ubuntu-to-create-a-wifi-access-point](http://cberner.com/2013/02/03/using-hostapd-on-ubuntu-to-create-a-wifi-access-point)
 
