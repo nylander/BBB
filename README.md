@@ -277,7 +277,7 @@ Add your own files (that all new users should have in their home folders) to `/e
 Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
     password="<password>"
-    pass=$(perl -e 'print crypt($password, "salt)')
+    pass=$(perl -e 'print crypt($password, "salt")')
     sudo useradd -m -G sudo -p "$pass" -s /bin/bash bbb
 
 
