@@ -2,7 +2,7 @@
 
 By: Johan Nylander, BILS
 
-Version: 03/12/2014 05:46:29 PM
+Version: 03/12/2014 08:31:05 PM
 
 **NOTE**: Partially incomplete instructions.
 
@@ -186,21 +186,36 @@ Change the host name `ubuntu-armhf` to `black`
 ### Install and configure webserver
 
 
-Add some default files
+#### Add some default files
 
-    #sudo cp $HOME/BBB/www/* /var/www
-
-
-Install the [lighttpd](http://www.lighttpd.net) webserver
-
-    #sudo apt-get install lighttpd
+    sudo cp $HOME/BBB/www/* /var/www
 
 
-Configure
+#### Install the [lighttpd](http://www.lighttpd.net) webserver
 
-    #more commands here
-    #sudo lighttpd-enable-mod userdir
-    #sudo service lighttpd reload
+    sudo apt-get install lighttpd
+
+
+#### Configure
+
+Add these lines to your `/etc/lighttpd/lighttpd.conf` file
+
+    dir-listing.activate = "enable"
+    dir-listing.show-header = "enable"
+    dir-listing.encode-header = "disable"
+    dir-listing.hide-header-file = "enable"
+    dir-listing.set-footer = "This is the BBB server."
+    # more options here
+
+
+Allow public user web directories (`http://10.0.0.1/~userNN`)
+
+    sudo lighttpd-enable-mod userdir
+
+
+Restart the webserver
+
+    sudo service lighttpd reload
 
 
 ### WiFi-broadcasting
