@@ -213,9 +213,18 @@ Allow public user web directories (`http://10.0.0.1/~userNN`)
     sudo lighttpd-enable-mod userdir
 
 
+Remove default index page
+
+    sudo rm /var/www/index.lighttpd.html
+
+
 Restart the webserver
 
     sudo service lighttpd reload
+
+
+Test by accessing (logged in to the **Mr.Black** network) `http://10.0.0.1`
+
 
 
 ### WiFi-broadcasting
