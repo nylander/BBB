@@ -42,7 +42,9 @@ Run these steps on your local computer having a card reader. Tested on 64bit Xub
     cd $HOME/tmp/bbb
 
 
-### Check device name by looking at what appears before and after plugging in the sd card in your computer
+### Check device name
+
+Check device name by looking at what appears before and after plugging in the sd card in your computer
 
     ls -lah /dev/sd* /dev/mmcb*
 
@@ -54,6 +56,7 @@ Look for your device, e.g., `/dev/mmcblk0`, not(!) the partition (e.g., `/dev/mm
 
 
 ### Get armhf image
+
 Image accessed March 2014. Revisit [http://www.armhf.com/index.php/download](http://www.armhf.com/index.php/download) to check for latest images.
 
     wget http://s3.armhf.com/debian/saucy/bone/ubuntu-saucy-13.10-armhf-3.8.13-bone30.img.xz
@@ -90,6 +93,7 @@ Image accessed March 2014. Revisit [http://www.armhf.com/index.php/download](htt
 
 You now have, hopefully, a bootable Linux distro on your sd card.
 
+
 ## Install image on BeagleBoneBlack.
 
 I connected a screen to the BBB via the HDMI, a USB-hub with external power source to the USB, and in the USB hub I connected a mouse, keyboard, and a USB WiFi adapter (Asus N53).
@@ -97,14 +101,14 @@ I connected a screen to the BBB via the HDMI, a USB-hub with external power sour
 
 ### Boot your image
 
-Insert sd card in bbb, and boot while holding the boot button.
+Insert sd card in the BBB, and boot while pressing the boot button.
 
-**NOTE**: The beaglebone black will try to boot the internal Angstrom image by default. To boot from microSD, you'll need to hold down the USER/BOOT button (located near the microSD end of the board) while powering-on the device.
+**NOTE**: The BBB will try to boot the internal Angstrom image by default. To boot from microSD, you'll need to hold down the USER/BOOT button (located near the microSD end of the board) while powering-on the device.
 
 
 ### Logon to ubuntu-armhf
 
-Logon to ubuntu-armhf as user `ubuntu` with a password `ubuntu`
+Logon to ubuntu-armhf as user `ubuntu` with password `ubuntu`
 
 
 ### Change keyboard layout if necessary
@@ -132,7 +136,7 @@ Try to boot from the new ubuntu-armhf on your eMMC
 
     shutdown -h now
 
-When the BBB is powered down, remove the sd card and power it up again. If all worked out, you should be greeted by a login prompt saying `ubuntu-armhf login: _`
+When the BBB is powered down, remove the sd card and power it up again. If all worked well, you should be greeted by a login prompt saying `ubuntu-armhf login: _`
 
 
 ## Configuration
@@ -151,7 +155,7 @@ If you need to apply this change permanently, run
 
     sudo setupcon --save
 
-Other ways to (permamently) change keyboard layout and TTY fonts etc are by using `sudo dpkg-reconfigure keyboard-configuration` and `sudo dpkg-reconfigure console-setup`.
+Other ways to (permanently) change keyboard layout and TTY fonts etc are by using `sudo dpkg-reconfigure keyboard-configuration` and `sudo dpkg-reconfigure console-setup`.
 
 
 ### Upgrade
@@ -208,7 +212,7 @@ Add these lines to your `/etc/lighttpd/lighttpd.conf` file
     # more options here
 
 
-Allow public user web directories (`http://10.0.0.1/~userNN`)
+Enable public user web directories (`http://10.0.0.1/~userNN`)
 
     sudo lighttpd-enable-mod userdir
 
@@ -221,10 +225,6 @@ Remove default index page
 Restart the webserver
 
     sudo service lighttpd reload
-
-
-Test by accessing (logged in to the **Mr.Black** network) `http://10.0.0.1`
-
 
 
 ### WiFi-broadcasting
@@ -303,12 +303,12 @@ Add new admin user (in group sudo). **NOTE**: need to provide `password`
     pass=$(perl -e 'print crypt("password", "salt")')
     sudo useradd -m -G sudo -p "$pass" -s /bin/bash bbb
 
-**NOTE**: please make sure this user can login and perform `sudo` commands before proceeding.
+**NOTE**: please make sure this user (`bbb`) can login and perform `sudo` commands before proceeding.
 
 
 #### Add users
 
-Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=20.
+Add N users (`user00`, `user01`, ..., `userN`) with the same password `catboxyellow`. We'll start with N=20.
 
     pass=$(perl -e 'print crypt("catboxyellow", "salt")')
     for u in $(seq -w 0 20); do sudo useradd -m -p "$pass" -s /bin/bash user${u}; done
@@ -327,9 +327,10 @@ Disable (lock) the default user `ubuntu`. To unlock, use `-u`.
 
 * WiFi alternatives for bridged settings (plug an ethernet cable in BBB, and let it share its' internet connection).
 
+* Utilize space on external microSD card.
 
 
-### Documentation
+### Sources
 
 I took information and some text from these sources (March 2014):
 
@@ -352,6 +353,5 @@ I took information and some text from these sources (March 2014):
 [https://help.ubuntu.com/community/WifiDocs/MasterMode](https://help.ubuntu.com/community/WifiDocs/MasterMode)
 
 [https://help.ubuntu.com/community/lighttpd](https://help.ubuntu.com/community/lighttpd)
-
 
 
