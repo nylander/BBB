@@ -277,7 +277,7 @@ Add your own files (that all new users should have in their home folders) to `/e
 Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
     password="<password>"
-    pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+    pass=$(perl -e 'print crypt($password, "password")')
     sudo useradd -m -G sudo -p $pass -s /bin/bash bbb
 
 
@@ -285,7 +285,7 @@ Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
 Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=20.
 
-    pass=$(perl -e 'print crypt($ARGV[0], "password")' "catboxyellow")
+    pass=$(perl -e 'print crypt("catboxyellow", "password")')
     for u in $(seq -w 0 20); do sudo useradd -m -p $pass -s /bin/bash user${u}; done
 
 
