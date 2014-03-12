@@ -278,7 +278,7 @@ Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
     password="<password>"
     pass=$(perl -e 'print crypt($password, "salt)')
-    sudo useradd -m -G sudo -p $pass -s /bin/bash bbb
+    sudo useradd -m -G sudo -p "$pass" -s /bin/bash bbb
 
 
 #### Add users
@@ -286,7 +286,7 @@ Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=20.
 
     pass=$(perl -e 'print crypt("catboxyellow", "salt")')
-    for u in $(seq -w 0 20); do sudo useradd -m -p $pass -s /bin/bash user${u}; done
+    for u in $(seq -w 0 20); do sudo useradd -m -p "$pass" -s /bin/bash user${u}; done
 
 
 #### Disable the default user
