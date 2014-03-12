@@ -279,6 +279,8 @@ Add new admin user (in group sudo). **NOTE**: need to provide `password`
     pass=$(perl -e 'print crypt("password", "salt")')
     sudo useradd -m -G sudo -p "$pass" -s /bin/bash bbb
 
+**NOTE**: please make sure this user can login and perform `sudo` commands before proceeding.
+
 
 #### Add users
 
