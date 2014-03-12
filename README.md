@@ -2,7 +2,7 @@
 
 By: Johan Nylander, BILS
 
-Version: 03/11/2014 04:21:07 PM
+Version: 03/12/2014 05:46:29 PM
 
 **NOTE**: Partially incomplete instructions.
 
@@ -199,9 +199,7 @@ Install the [lighttpd](http://www.lighttpd.net) webserver
 Configure
 
     #more commands here
-
     #sudo lighttpd-enable-mod userdir
-
     #sudo service lighttpd reload
 
 
@@ -278,14 +276,17 @@ Add your own files (that all new users should have in their home folders) to `/e
 
 Add new admin user (in group sudo). **NOTE**: need to provide `<password>`
 
-    sudo useradd -m -G sudo -p <password>  bbb
+    password="<password>"
+    pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+    sudo useradd -m -G sudo -p $pass -s /bin/bash bbb
 
 
 #### Add users
 
 Add N users (`user00`, `user01`, ..., `userN`) with the same password: `catboxyellow`. We'll start with N=20.
 
-    for u in $(seq -w 0 20); do sudo useradd -m -p catboxyellow user${u}; done
+    pass=$(perl -e 'print crypt($ARGV[0], "password")' "catboxyellow")
+    for u in $(seq -w 0 20); do sudo useradd -m -p $pass -s /bin/bash user${u}; done
 
 
 #### Disable the default user
