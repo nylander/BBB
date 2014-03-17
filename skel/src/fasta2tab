@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+# fasta2tab
+# one-liner: perl -0076 -ne 'chomp;($h,@S)=split/\n/;$s=join("",@S);print"$h\t$s\n"unless(!$h)'
+# Johan Nylander
+local $/ = '>';
+while(<>) {
+    chomp;
+    next if($_ eq '');
+    my ($h, @S) = split /\n/;
+    my $s = join('', @S);
+    print STDOUT "$h\t$s\n" unless (!$h);
+}
