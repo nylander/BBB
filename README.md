@@ -2,7 +2,7 @@
 
 By: Johan Nylander, BILS
 
-Version: 03/12/2014 08:31:05 PM
+Version: March 2014
 
 **NOTE**: Partially incomplete instructions.
 
@@ -192,7 +192,7 @@ Change the host name `ubuntu-armhf` to `black`
 
 #### Add some default files
 
-    sudo cp $HOME/BBB/www/* /var/www
+    sudo cp -r $HOME/BBB/www/* /var/www
 
 
 #### Install the [lighttpd](http://www.lighttpd.net) webserver
