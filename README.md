@@ -183,7 +183,7 @@ Change the host name `ubuntu-armhf` to `black`
 
     sudo sed -i.bkp -e 's/ubuntu-armhf/black' /etc/hostname
     sudo sed -i.bkp -e 's/ubuntu-armhf/black' /etc/hosts
-    sudo service hostname restart
+    sudo service hostname restart   # If not working, do reboot below
     sudo shutdown -r now
 
 
@@ -312,6 +312,8 @@ Add N users (`user00`, `user01`, ..., `userN`) with the same password `catboxyel
 
     pass=$(perl -e 'print crypt("catboxyellow", "salt")')
     for u in $(seq -w 0 20); do sudo useradd -m -p "$pass" -s /bin/bash user${u}; done
+
+If you need a random (component) to your password, look at the [create_users.sh](create_users.sh) script.
 
 
 #### Disable the default user
