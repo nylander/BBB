@@ -1,7 +1,6 @@
 <HTML>
     <br>
-    <br>
-    These are your files on the webserver.
+    These are your public files on the webserver.
     <br>
     Right-click on file in browser to download.
     <br>
