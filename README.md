@@ -313,7 +313,7 @@ Add N users (`user00`, `user01`, ..., `userN`) with the same password `catboxyel
     pass=$(perl -e 'print crypt("catboxyellow", "salt")')
     for u in $(seq -w 0 20); do sudo useradd -m -p "$pass" -s /bin/bash user${u}; done
 
-If you need a random (component) to your password, look at the [create_users.sh](create_users.sh) script.
+If you need a random (component) to your password, look at the [create_users.sh](users/create_users.sh) script.
 
 
 #### Disable the default user
