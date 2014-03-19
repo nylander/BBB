@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Description: Create N users with password PASSBASE+RANDNR
+#              Prints a file 'user-info.txt' with user names and passwords
+# Usage:       sudo ./create_users.sh Nusers
+#              where 'Nusers' is a number
+# Version:     03/19/2014
+# By:          Johan Nylander
+
+PASSBASE='catboxyellow'
+USERINFO="user-info.txt"
+
+if [ "$#" -eq 0 ] ; then
+  echo -e "Usage: sudo `basename $0` Nusers"
+  exit 1
+else
+  if [ -e "$USERINFO" ] ; then
+    echo "File $USERINFO with password information already exist."
+    echo "Will not overwrite. Quitting."
+    exit 1
+  else
+    NUSERS=$1
+    echo "Attempting to create $NUSERS on the current system"
+    echo '' >> $USERINFO
+    for u in $(seq -w 0 "$NUSERS"); do
+      RANDNR=$(echo $RANDOM%900 | bc)
+      PASSWD="${PASSBASE}${RANDNR}"
+      USER="user${u}"
+      echo "$USER"
+      PASS=$(perl -e "print crypt($PASSWD, 'salt')")
+      sudo useradd -m -p "$PASS" -s /bin/bash user${u}
+      echo "User: $USER    Passwd: $PASSWD" >> $USERINFO
+      echo '' >> $USERINFO
+    done
+    if [ -e "$USERINFO" ] ; then
+        echo "Important: keep file $USERINFO with password information."
+     fi
+  fi
+fi
