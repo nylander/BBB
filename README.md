@@ -4,8 +4,6 @@ By: Johan Nylander, BILS
 
 Version: March 2014
 
-**NOTE**: Partially incomplete instructions.
-
 
 ## Description
 
@@ -166,7 +164,7 @@ Other ways to (permanently) change keyboard layout and TTY fonts etc are by usin
 
 ### Install some software
     
-    sudo apt-get install vim git dnsmasq iw hostapd curl
+    sudo apt-get install vim git dnsmasq iw hostapd curl psmisc
 
 Add your own here
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 # tab2fasta
+# Johan Nylander
 # one-liner: perl -naF'\t' -e 'print">$F[0]\n$F[1]\n"'
 #            perl -naF'\t' -e '$F[1]=~s/(\S{60})/$&\n/gs;print">$F[0]\n$F[1]\n"'
 while(<>) {
