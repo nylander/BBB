@@ -283,6 +283,7 @@ Create the file `/etc/hosts.dnsmasq` with the name of your computer:
 
 If you have network-manager configured to use your wifi card, you should disable auto-connect for all the wireless connections. Otherwise, it may interfere with hostapd.
 
+**NOTE**: In order to have the BBB boot as a bare-bone machine (only power adapter and USB-WiFi dongle connected), I had to comment out the `auto eth0` and `iface eth0 inet dhcp` I had in my `/etc/network/interfaces` file, then reboot. If you want to connect to the BBB using an ethernet cable, those lines have to be enabled again.
 
 ### Add files to `/etc/skel`
 
