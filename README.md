@@ -232,7 +232,7 @@ See also [wireless.kernel.org](http://wireless.kernel.org/en/users/Documentation
 
 For automated channel selection, try to add (in `hostapd.conf`): `CONFIG_ACS=y` and `channel=acs_survey`. (**NOTE**: didn't work 2014-Mar-14)
 
-We will start by setting up an open network to prevent connection problems. Take necessary precautions (e.g., setting ''wpa=3'') if using a bridged network.
+We will start by setting up an open network to prevent connection problems. Take necessary precautions (e.g., setting `wpa=3`) if using a bridged network.
 
 #### Create the file `/etc/hostapd/hostapd.conf` with the follow content:
 
