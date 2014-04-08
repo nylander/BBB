@@ -1,0 +1,17 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# loopback network interface
+auto lo
+iface lo inet loopback
+
+# primary network interface
+# JN: I commented out the following 2 lines before rebooting to a stand-alone BBB server
+#auto eth0
+#iface eth0 inet dhcp
+
+# wireless network interface
+auto wlan0
+iface wlan0 inet static
+address 10.0.0.1
+netmask 255.255.255.0
+

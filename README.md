@@ -2,7 +2,7 @@
 
 By: Johan Nylander, BILS
 
-Version: March 2014
+Version: April 2014
 
 
 ## Description
@@ -232,6 +232,7 @@ See also [wireless.kernel.org](http://wireless.kernel.org/en/users/Documentation
 
 For automated channel selection, try to add (in `hostapd.conf`): `CONFIG_ACS=y` and `channel=acs_survey`. (**NOTE**: didn't work 2014-Mar-14)
 
+We will start by setting up an open network to prevent connection problems. Take necessary precautions (e.g., setting ''wpa=3'') if using a bridged network.
 
 #### Create the file `/etc/hostapd/hostapd.conf` with the follow content:
 
@@ -243,7 +244,7 @@ For automated channel selection, try to add (in `hostapd.conf`): `CONFIG_ACS=y` 
     macaddr_acl=0
     auth_algs=1
     ignore_broadcast_ssid=0
-    wpa=3
+    wpa=0
     wpa_passphrase=Mr.Black
     wpa_key_mgmt=WPA-PSK
     wpa_pairwise=TKIP
