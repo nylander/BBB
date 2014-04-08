@@ -256,11 +256,9 @@ We will start by setting up an open network to prevent connection problems. Take
     DAEMON_CONF=/etc/hostapd/hostapd.conf
 
 
-#### dnsmasq
+Setup dnsmasq to handle DHCP and DNS on our wifi network, otherwise your clients won't be able to get an IP address:
 
-Setup dnsmasq to handle DHCP and DNS on our wifi network, otherwise your clients won't be able to get an IP address.
-
-Edit the dnsmasq configuration file `/etc/dnsmasq.conf` to include this:
+#### Edit the dnsmasq configuration file `/etc/dnsmasq.conf` to include this:
 
     interface=wlan0
     dhcp-range=10.0.0.2,10.0.0.10,255.255.255.0,12h
@@ -270,7 +268,7 @@ Edit the dnsmasq configuration file `/etc/dnsmasq.conf` to include this:
 
 We set `no-hosts` to avoid including all the entries in your hosts file in the DNS server, and instead set a separate file that will configure the DNS mapping for the machine hosting the AP.
 
-Create the file `/etc/hosts.dnsmasq` with the name of your computer:
+#### Create the file `/etc/hosts.dnsmasq` with the name of your computer:
 
     10.0.0.1 black
 
