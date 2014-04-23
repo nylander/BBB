@@ -33,14 +33,14 @@ Admin user/passwd on the finished BeagleBone Black box:
 Run these steps on your local computer having a card reader. Tested on 64bit Xubuntu 13.10.
 
 
-### Become root
+#### Become root
 
     sudo su -
     mkdir -p $HOME/tmp/bbb
     cd $HOME/tmp/bbb
 
 
-### Check device name
+#### Check device name
 
 Check device name by looking at what appears before and after plugging in the sd card in your computer
 
@@ -53,30 +53,30 @@ Plug in sd card
 Look for your device, e.g., `/dev/mmcblk0`, not(!) the partition (e.g., `/dev/mmcblk0p1`)
 
 
-### Get armhf image
+#### Get armhf image
 
 Image accessed March 2014. Revisit [http://www.armhf.com/index.php/download](http://www.armhf.com/index.php/download) to check for latest images.
 
     wget http://s3.armhf.com/debian/saucy/bone/ubuntu-saucy-13.10-armhf-3.8.13-bone30.img.xz
 
 
-### Unpack and write image
+#### Unpack and write image
 
     apt-get install xz-utils
     xz -cd ubuntu-saucy-13.10-armhf-3.8.13-bone30.img.xz > /dev/mmcblk0
 
 
-### Partprobe
+#### Partprobe
 
     partprobe /dev/mmcblk0
 
 
-### Check that we have two partitions
+#### Check that we have two partitions
 
     ls -la /dev/mmcblk0*
 
 
-### Mount, sync, umount
+#### Mount, sync, umount
 
     mkdir /media/b1 /media/b2
     mount /dev/mmcblk0p1 /media/b1
@@ -87,7 +87,7 @@ Image accessed March 2014. Revisit [http://www.armhf.com/index.php/download](htt
     rmdir /media/b1 /media/b2
 
 
-### Eject sd card
+#### Eject sd card
 
 You now have, hopefully, a bootable Linux distro on your sd card.
 
