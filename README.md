@@ -2,7 +2,7 @@
 
 By: Johan Nylander, BILS
 
-Version: April 2014
+Version: August 2015
 
 
 ## Description
@@ -261,7 +261,7 @@ Setup dnsmasq to handle DHCP and DNS on our wifi network, otherwise your clients
 #### Edit the dnsmasq configuration file `/etc/dnsmasq.conf` to include this:
 
     interface=wlan0
-    dhcp-range=10.0.0.2,10.0.0.10,255.255.255.0,12h
+    dhcp-range=10.0.0.2,10.0.0.50,12h
     no-hosts
     addn-hosts=/etc/hosts.dnsmasq
 
