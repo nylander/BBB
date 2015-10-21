@@ -29,7 +29,7 @@ else
       PASS=$(perl -e "print crypt($PASSWD, 'salt')")
       sudo useradd -m -p "$PASS" -s /bin/bash user${u}
       SRV=$(host -Tta $(hostname -s)|grep "has address"|awk '{print $1}')
-      echo "User: $USER Passwd: $PASSWD SSH: ssh -X $USER@$SRV" >> $USERINFO
+      echo "User: $USER Passwd: $PASSWD SSH: ssh $USER@$SRV" >> $USERINFO
       echo '' >> $USERINFO
     done
     if [ -e "$USERINFO" ] ; then
