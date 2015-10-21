@@ -4,7 +4,7 @@
 #              Prints a file 'user-info.txt' with user names and passwords
 # Usage:       sudo ./create_users.sh Nusers
 #              where 'Nusers' is a number
-# Version:     03/19/2014
+# Version:     10/21/2015
 # By:          Johan Nylander
 
 PASSBASE='catboxyellow'
@@ -29,7 +29,8 @@ else
       echo "$USER"
       PASS=$(perl -e "print crypt($PASSWD, 'salt')")
       sudo useradd -m -p "$PASS" -s /bin/bash user${u}
-      echo "User: $USER    Passwd: $PASSWD" >> $USERINFO
+      SRV=$(host -Tta $(hostname -s)|grep "has address"|awk '{print $1}')
+      echo "User: $USER Passwd: $PASSWD SSH: ssh -X $USER@$SRV" >> $USERINFO
       echo '' >> $USERINFO
     done
     if [ -e "$USERINFO" ] ; then
